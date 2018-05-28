@@ -30,9 +30,6 @@ public class LoginPresenterImplementor implements LoginPresenter, OnLoginFinishe
                     } else if (TextUtils.isEmpty(password)) {
                         loginView.hideLoader();
                         loginView.setPasswordEmptyError();
-                    } else if (TextUtils.isEmpty(password)) {
-                        loginView.hideLoader();
-                        loginView.setPasswordEmptyError();
                     } else {
                         loginInteractor.signInUser(emailID, password);
                     }

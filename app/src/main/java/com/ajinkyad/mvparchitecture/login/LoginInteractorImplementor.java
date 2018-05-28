@@ -10,6 +10,10 @@ public class LoginInteractorImplementor implements LoginInteractor {
         this.onLoginFinishedListener = onLoginFinishedListener;
     }
 
+    LoginInteractorImplementor() {
+
+    }
+
     @Override
     public void signInUser(final String username, final String password) {
 
@@ -17,7 +21,7 @@ public class LoginInteractorImplementor implements LoginInteractor {
             @Override
             public void run() {
                 if (onLoginFinishedListener != null) {
-                    if (username.trim().equals("test@test.com") && password.trim().equals("password")) {
+                    if (validCredentials(username, password)) {
                         onLoginFinishedListener.onSuccess();
                     } else {
                         onLoginFinishedListener.onFailure();
@@ -27,4 +31,15 @@ public class LoginInteractorImplementor implements LoginInteractor {
         }, 1500);
 
     }
+
+    public boolean validCredentials(String username, String password) {
+
+        if (username.trim().equals("test@test.com") && password.trim().equals("password")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }
